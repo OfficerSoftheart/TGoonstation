@@ -10,7 +10,7 @@
 	var/mode = 0
 	var/obj/machinery/power/data_terminal/link = null
 	var/filter_id = null
-	var/list/filters = list()
+	var/list/sniffFilters = list()
 	var/last_intercept = 0
 	var/list/packet_data = list()
 	var/max_logs = 8
@@ -136,8 +136,8 @@
 			return
 
 		var/badcheck = 0
-		for(var/check in src.filters)
-			if(!(check in signal.data) || signal.data[check] != src.filters[check])
+		for(var/check in src.sniffFilters)
+			if(!(check in signal.data) || signal.data[check] != src.sniffFilters[check])
 				badcheck = 1
 				break
 		if(badcheck)
